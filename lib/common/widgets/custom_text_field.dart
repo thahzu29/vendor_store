@@ -11,7 +11,7 @@ class CustomTextField extends StatelessWidget {
   final int maxLine;
   final int? maxLength;
   final String? Function(String?)? validator;
-  final Function(String)? onChanged; // Thêm thuộc tính onChanged
+  final Function(String)? onChanged;
 
   const CustomTextField({
     super.key,
@@ -23,7 +23,7 @@ class CustomTextField extends StatelessWidget {
     this.maxLine = 1,
     this.maxLength,
     this.validator,
-    this.onChanged, // Khởi tạo onChanged
+    this.onChanged,
   });
 
   @override
@@ -36,7 +36,7 @@ class CustomTextField extends StatelessWidget {
         obscureText: isPassword,
         keyboardType: keyboardType,
         validator: validator,
-        onChanged: onChanged, // Gọi sự kiện khi nhập liệu
+        onChanged: onChanged,
         decoration: InputDecoration(
           labelText: label,
           labelStyle: AppStyles.STYLE_14.copyWith(color: AppColors.blackFont),

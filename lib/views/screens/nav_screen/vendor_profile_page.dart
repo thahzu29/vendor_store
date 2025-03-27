@@ -11,7 +11,7 @@ class VendorProfilePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Main Vendor Page'),
         actions: [
-          const SignOutButton(), // Thêm nút đăng xuất vào AppBar
+          const SignOutButton(),
         ],
       ),
       body: const Center(

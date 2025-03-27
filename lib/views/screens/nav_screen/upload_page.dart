@@ -46,17 +46,17 @@ class _UploadPageState extends ConsumerState<UploadPage> {
   // Khoi tao danh sach rong de luu tru anh duoc chon
   List<File> images = [];
 
-  // Dinh nghia ham chon anh tu thu vien
   chooseImage() async {
-    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
-    if (pickedFile != null) {
+    final pickedFiles = await picker.pickMultiImage();
+    if (pickedFiles != null && pickedFiles.isNotEmpty) {
       setState(() {
-        images.add(File(pickedFile.path));
+        images.addAll(pickedFiles.map((pickedFile) => File(pickedFile.path)));
       });
     } else {
-      print("Khong chon anh nao");
+      print("Không chọn ảnh nào");
     }
   }
+
 
   // Lay danh muc con theo ten danh muc cha
   void getSubcategoryByCategory(Category? category) {
@@ -88,16 +88,16 @@ class _UploadPageState extends ConsumerState<UploadPage> {
                 itemBuilder: (context, index) {
                   return index == 0
                       ? Center(
-                          child: IconButton(
-                            onPressed: chooseImage,
-                            icon: const Icon(Icons.add),
-                          ),
-                        )
+                    child: IconButton(
+                      onPressed: chooseImage,
+                      icon: const Icon(Icons.camera_alt),
+                    ),
+                  )
                       : SizedBox(
-                          width: 50,
-                          height: 40,
-                          child: Image.file(images[index - 1]),
-                        );
+                    width: 50,
+                    height: 40,
+                    child: Image.file(images[index - 1]),
+                  );
                 },
               ),
               Padding(
